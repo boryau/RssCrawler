@@ -22,6 +22,11 @@ public class FeedHandler {
     public FeedHandler(){
     }
 
+    /**
+     * Handle all feeds from specific url and save them to our system
+     * @param channelFeeds
+     * @param syndFeed
+     */
     public void handleFeed(RssChannelFeeds channelFeeds, SyndFeed syndFeed) {
         logger.info("FeedHandler handleFeed start");
         List entries = syndFeed.getEntries();

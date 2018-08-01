@@ -36,7 +36,10 @@ public class InputController {
 
     private Logger logger = Logger.getLogger(InputController.class);
 
-
+    /**
+     * Retreive all rss site names which are saved in our system
+     * @return
+     */
     @RequestMapping(value= "getAllChannels", method = RequestMethod.GET)
     public @ResponseBody List<String> getAllChannels() {
         logger.info("InputController getAllChannels start");
@@ -45,6 +48,11 @@ public class InputController {
         return reponse;
     }
 
+    /**
+     * Get feeds from specific rss site
+     * @param rssName
+     * @return
+     */
     @RequestMapping(value= "getRssFeeds", method = RequestMethod.GET)
     public @ResponseBody List<FeedMetaData> getRssFeeds(@RequestParam("rssName") String rssName) {
         logger.info("InputController getRssFeeds start for rss "+ rssName);
@@ -53,7 +61,11 @@ public class InputController {
         return channelFeeds.getFeedMetaDataList();
     }
 
-
+    /**
+     * Receives Url of rss sites and reads all feeds from them
+     * @param rssRequest
+     * @return
+     */
     @RequestMapping(value = "check", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity<RssResponse> handleRss(@RequestBody RssRequest rssRequest){
@@ -72,7 +84,9 @@ public class InputController {
                         }
                         channelFeeds.setChannelName(syndFeed.getTitle());
                         channelFeeds.setChannelUrl(rssUrl);
+                        //Save all rss site feeds to our system
                         feedHandler.handleFeed(channelFeeds, syndFeed);
+
                         rssChannels.getRegisteredRssChannels().put(rssUrl, channelFeeds);
                     } catch (MalformedURLException exception) {
                         logger.error("Malformed Url received" , exception);
@@ -81,15 +95,15 @@ public class InputController {
                         logger.error("Feed crawling failed", feedException);
                         rssChannels.increaseNumOfFailedProcesses(1);
                     }catch(Exception generalException){
-                        logger.error("General Exception occurde", generalException);
+                        logger.error("General Exception occured", generalException);
                         rssChannels.increaseNumOfFailedProcesses(1);
                     }
                 }
         );
-
+        //In case all rss urls provided to us were not processed due to exceptions return 400
         if(rssChannels.getNumOfFailedProcesses() == rssRequest.getRssList().size()) {
             output.setCode(400);
-            output.setMessage("All Rss urls were not hanlded");
+            output.setMessage("All Rss urls were have not been saved ");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(output);
         }
         output.setCode(200);

@@ -1,6 +1,5 @@
 package com.crawler.rss.data;
 
-import java.util.Date;
 
 public class FeedMetaData {
 

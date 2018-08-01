@@ -19,6 +19,15 @@ public class RssInputFeeds implements InputFeed {
 
     private Logger logger = Logger.getLogger(RssInputFeeds.class);
 
+    /**
+     * Establishe connection with Rss site and fetch rss url
+     * @param rssUrl
+     * @return
+     * @throws MalformedURLException
+     * @throws IOException
+     * @throws FeedException
+     * @throws FetcherException
+     */
     @Override
     public SyndFeed getFeeds(String rssUrl) throws MalformedURLException, IOException, FeedException, FetcherException  {
         logger.info("SyndFeed getFeeds start for Url "+ rssUrl);
