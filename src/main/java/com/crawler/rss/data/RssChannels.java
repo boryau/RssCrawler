@@ -4,11 +4,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class RssChannels {
-
-    private Map<String, RssChannelFeeds> registeredRssChannels = new HashMap<>();
+    private Map<String, RssChannelFeeds> registeredRssChannels = new ConcurrentHashMap<>();
 
     private int numOfFailedProcesses = 0;
 
