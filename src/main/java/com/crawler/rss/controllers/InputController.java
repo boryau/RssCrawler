@@ -66,7 +66,7 @@ public class InputController {
      * @param rssRequest
      * @return
      */
-    @RequestMapping(value = "check", method = RequestMethod.POST)
+    @RequestMapping(value = "handleRss", method = RequestMethod.POST)
     public @ResponseBody
     ResponseEntity<RssResponse> handleRss(@RequestBody RssRequest rssRequest){
         logger.info("InputController handleRss start");

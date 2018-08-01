@@ -1,0 +1,40 @@
+Starting RssApplication on borisu-mac with PID 97257 (/Users/borisu/IdeaProjects/RssCrawler/target/classes started by borisu in /Users/borisu/IdeaProjects/RssCrawler)
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e78b6a5: startup date [Wed Aug 01 11:00:32 IDT 2018]; root of context hierarchy
+No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$9d333a34] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Tomcat initialized with port(s): 9090 (http)
+Root WebApplicationContext: initialization completed in 1465 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapped "{[/rss/getAllChannels],methods=[GET]}" onto public java.util.List<java.lang.String> com.crawler.rss.controllers.InputController.getAllChannels()
+Mapped "{[/rss/getRssFeeds],methods=[GET]}" onto public java.util.List<com.crawler.rss.data.FeedMetaData> com.crawler.rss.controllers.InputController.getRssFeeds(java.lang.String)
+Mapped "{[/rss/handleRss],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.crawler.rss.data.RssResponse> com.crawler.rss.controllers.InputController.handleRss(com.crawler.rss.data.RssRequest)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e78b6a5: startup date [Wed Aug 01 11:00:32 IDT 2018]; root of context hierarchy
+Initializing ExecutorService  'taskScheduler'
+Registering beans for JMX exposure on startup
+Starting beans in phase 0
+Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+Channel 'application.errorChannel' has 1 subscriber(s).
+started _org.springframework.integration.errorLogger
+Tomcat started on port(s): 9090 (http) with context path ''
+Started RssApplication in 2.666 seconds (JVM running for 3.251)
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+No mapping found for HTTP request with URI [/rss/handleRe] in DispatcherServlet with name 'dispatcherServlet'
+InputController handleRss start
+InputController handleRss url is http://rss.cnn.com/rss/edition.rss
+SyndFeed getFeeds start for Url http://rss.cnn.com/rss/edition.rss
+SyndFeed getFeeds end
+FeedHandler handleFeed start
+FeedHandler handleFeed end
+InputController handleRss url is http://www.heise.de/tp/rss/news-xl.xml
+SyndFeed getFeeds start for Url http://www.heise.de/tp/rss/news-xl.xml
+SyndFeed getFeeds end
+FeedHandler handleFeed start
+FeedHandler handleFeed end
+InputController handleRss end
